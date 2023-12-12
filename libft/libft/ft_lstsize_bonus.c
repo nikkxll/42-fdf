@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/13 00:42:23 by dmitriiniki      ###   ########.fr       */
+/*   Created: 2023/10/30 12:12:26 by dnikifor          #+#    #+#             */
+/*   Updated: 2023/12/08 00:40:01 by dmitriiniki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+// Function name: ft_lstsize
 
-typedef struct s_map
+// Prototype: int ft_lstsize(t_list *lst);
+
+// Turn in files: -
+
+// Parameters: lst: The beginning of the list.
+
+// Return value: The length of the list
+
+// External functs.: None
+
+// Description: Counts the number of nodes in a list.
+
+#include "../libft.h"
+
+int	ft_lstsize(t_list *lst)
 {
-    int	size_y;
-	int	size_x;
-	int	**map;
-}   t_map;
+	int	i;
 
-# include "./libft/libft.h"
-# include "./libft/libft/get_next_line.h"
-# include <fcntl.h>
-# include <stdio.h>
-
-t_map	*reader(t_map	*matrix, char **argv, int fd, char *line);
-char	*matrix_initializer(t_map	*matrix, char **argv, int fd);
-
-#endif
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}

@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/13 00:42:23 by dmitriiniki      ###   ########.fr       */
+/*   Created: 2023/10/27 11:25:39 by dnikifor          #+#    #+#             */
+/*   Updated: 2023/12/08 00:40:21 by dmitriiniki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+// Prototype: void ft_putchar_fd(char c, int fd);
 
-typedef struct s_map
+// Turn in files: -
+
+// Parameters: c: The character to output.
+//			   fd: The file descriptor on which to write.
+
+// Return value: None
+
+// External functs.: write
+
+// Description: Outputs the character ’c’ to the given file
+// descriptor.
+
+#include "../libft.h"
+
+void	ft_putchar_fd(char c, int fd)
 {
-    int	size_y;
-	int	size_x;
-	int	**map;
-}   t_map;
-
-# include "./libft/libft.h"
-# include "./libft/libft/get_next_line.h"
-# include <fcntl.h>
-# include <stdio.h>
-
-t_map	*reader(t_map	*matrix, char **argv, int fd, char *line);
-char	*matrix_initializer(t_map	*matrix, char **argv, int fd);
-
-#endif
+	write(fd, &c, 1);
+}

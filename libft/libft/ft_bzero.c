@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/13 00:42:23 by dmitriiniki      ###   ########.fr       */
+/*   Created: 2023/10/23 18:20:33 by dnikifor          #+#    #+#             */
+/*   Updated: 2023/12/08 00:38:45 by dmitriiniki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+// SYNOPSIS
+//	#include <strings.h>
+//	void bzero(void *s, size_t n);
 
-typedef struct s_map
+// DESCRIPTION
+//	The bzero() function writes n zeroed bytes to the string s.  
+//	If n is zero, bzero() does nothing.
+
+#include "../libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-    int	size_y;
-	int	size_x;
-	int	**map;
-}   t_map;
-
-# include "./libft/libft.h"
-# include "./libft/libft/get_next_line.h"
-# include <fcntl.h>
-# include <stdio.h>
-
-t_map	*reader(t_map	*matrix, char **argv, int fd, char *line);
-char	*matrix_initializer(t_map	*matrix, char **argv, int fd);
-
-#endif
+	ft_memset(s, '\0', n);
+}
