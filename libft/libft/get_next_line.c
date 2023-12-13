@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
+/*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:57:03 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/13 14:40:47 by dmitriiniki      ###   ########.fr       */
+/*   Updated: 2023/12/13 16:18:40 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ char	*ft_strcpy_newl_copy(char *src, char *dest)
 	return (ptr);
 }
 
-char	*ft_strcpy_curr_line(char *src, int fd)
+char	*ft_strcpy_curr_line(char *src)
 {
 	size_t		i;
 	char		*dest;
-	char		*extra;
 
 	i = 0;
 	if (!src || src[0] == '\0')
@@ -121,7 +120,7 @@ char	*get_next_line(int fd)
 		text_runner[fd] = NULL;
 		return (NULL);
 	}
-	current_line = ft_strcpy_curr_line(text_runner[fd], fd);
+	current_line = ft_strcpy_curr_line(text_runner[fd]);
 	if (current_line == NULL)
 	{
 		text_runner[fd] = ft_free(text_runner[fd]);

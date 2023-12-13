@@ -3,59 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
+/*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 23:30:29 by dmitriiniki       #+#    #+#             */
-/*   Updated: 2023/12/13 14:15:59 by dmitriiniki      ###   ########.fr       */
+/*   Created: 2023/12/13 16:17:57 by dnikifor          #+#    #+#             */
+/*   Updated: 2023/12/13 21:02:41 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void print(t_map * matrix)
+void	print(t_map *matrix)
 {
-    int i = 0;
-    int j = 0;
+	int	i;
+	int	j;
 
-    while(i < matrix->size_y)
-    {
-        j = 0;
-        while(j < matrix->size_x)
-        {
-            printf("%d ", matrix->map[i][j]);
-            j++;
-        }
-        printf("\n");
-        i++;
-    }
+	i = 0;
+	j = 0;
+	while (i < matrix->size_y)
+	{
+		j = 0;
+		while (j < matrix->size_x)
+		{
+			printf("%d ", matrix->map[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_map	*matrix;
-    int fd;
-    char *line;
-    int i;
-    
-    i = 0;
-    fd = 0;
+	t_map	*matrix;
+	int		fd;
+	char	*line;
+	int		i;
+
+	i = 0;
+	fd = 0;
 	if (argc == 2)
-    {
-        matrix = (t_map *)malloc(sizeof(t_map));
-	    if(!matrix)
-		    exit(1);
-        fd = open(argv[1], O_RDONLY);
-        if (fd == -1)
-        {
-            free(matrix);
-            exit(1);
-        }
-        line = matrix_initializer(matrix, argv, fd);
-        matrix = reader(matrix, argv, fd, line);
-        print(matrix);
-        free_mem((void **)matrix->map, matrix->size_y);
-        free(matrix);
-        if (close(fd) < 0)
-            exit (1);
-    }
+	{
+		matrix = (t_map *)malloc(sizeof(t_map));
+		if (!matrix)
+			exit(1);
+		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+		{
+			free(matrix);
+			exit(1);
+		}
+		line = matrix_initializer(matrix, argv, fd);
+		matrix = reader(matrix, argv, fd, line);
+		if (!matrix)
+			return (0);
+		print(matrix);
+		free_set_four(matrix, matrix->size_y);
+		if (close(fd) < 0)
+			exit(1);
+	}
 }
