@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:53:31 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/09 12:47:07 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:38:57 by dmitriiniki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

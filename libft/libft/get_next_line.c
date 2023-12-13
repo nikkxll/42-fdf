@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:57:03 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/09 12:48:12 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:40:47 by dmitriiniki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ char	*ft_strcpy_newl_copy(char *src, char *dest)
 	return (ptr);
 }
 
-char	*ft_strcpy_curr_line(char *src)
+char	*ft_strcpy_curr_line(char *src, int fd)
 {
 	size_t		i;
-	char		*ptr;
 	char		*dest;
+	char		*extra;
 
 	i = 0;
 	if (!src || src[0] == '\0')
@@ -51,8 +51,7 @@ char	*ft_strcpy_curr_line(char *src)
 		dest = malloc((i + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
-	ptr = ft_strcpy_newl_copy(src, dest);
-	return (ptr);
+	return (ft_strcpy_newl_copy(src, dest));
 }
 
 char	*ft_strcpy_remainder(char *src)
@@ -122,8 +121,13 @@ char	*get_next_line(int fd)
 		text_runner[fd] = NULL;
 		return (NULL);
 	}
-	current_line = ft_strcpy_curr_line(text_runner[fd]);
-	if (!current_line)
+	current_line = ft_strcpy_curr_line(text_runner[fd], fd);
+	if (current_line == NULL)
+	{
+		text_runner[fd] = ft_free(text_runner[fd]);
+		return (NULL);
+	}
+	else if (!current_line)
 	{
 		text_runner[fd] = ft_free(text_runner[fd]);
 		return (NULL);

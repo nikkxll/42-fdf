@@ -6,7 +6,7 @@
 /*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/13 00:42:23 by dmitriiniki      ###   ########.fr       */
+/*   Updated: 2023/12/13 13:23:32 by dmitriiniki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ typedef struct s_map
 
 t_map	*reader(t_map	*matrix, char **argv, int fd, char *line);
 char	*matrix_initializer(t_map	*matrix, char **argv, int fd);
+void	free_mem(void **arr, int length);
 
 #endif
