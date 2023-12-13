@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   gnl_cleaner.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 19:34:16 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/13 19:43:49 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/13 23:06:48 by dmitriiniki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
 void	gnl_cleaner(int fd)
 {
