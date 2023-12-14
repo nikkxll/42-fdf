@@ -1,7 +1,7 @@
 NAME = fdf
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -g -Wall -Wextra -Werror
 
 LIBFT_DIR = ./libft/
 LIBFT_DIR_MAIN = ./libft/libft/
@@ -20,7 +20,7 @@ SRCS_LIBFT = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
   ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
   get_next_line.c get_next_line_utils.c
 
-SRCS_FDF = freers.c gnl_cleaner.c main.c reader.c
+SRCS_FDF = freers.c utils.c main.c map_creation.c reader.c
 
 HEADER = fdf.h
 HEADER_LIBFT = libft/libft.h
