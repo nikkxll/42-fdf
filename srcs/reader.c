@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:46:44 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/14 20:01:37 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/14 23:50:06 by dmitriiniki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,18 @@ void	print(t_map *matrix)
 
 t_map	*reader(char **argv)
 {
-	int		fd;
-	char	*line;
 	t_map	*matrix;
 
 	matrix = (t_map *)malloc(sizeof(t_map));
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	matrix->fd = open(argv[1], O_RDONLY);
+	if (matrix->fd == -1)
 	{
 		free(matrix);
 		exit(1);
 	}
-	line = matrix_initializer(matrix, argv, fd);
-	matrix = map_creation(matrix, fd, line, 0);
-	if (close(fd) < 0)
-		exit(free_mtx_map(matrix, matrix->size_y, fd));
+	matrix->line = matrix_initializer(matrix, argv);
+	matrix = map_creation(matrix, 0, 0);
+	if (close(matrix->fd) < 0)
+		exit(free_mtx_map(matrix, matrix->size_y));
 	return (matrix);
 }

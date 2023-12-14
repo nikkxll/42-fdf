@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 19:34:16 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/14 19:52:06 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/14 23:30:18 by dmitriiniki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,25 @@ int	array_length(char **split_line)
 	return (length);
 }
 
-static int	is_valid_args(char *str, int i, int j, int temp)
+static int	is_valid_args(char *str, int j, int temp)
 {
 	if (str[j] == 0)
 		return (1);
-	if (str[j] == '-' || str[j] == '+')
-		j++;
+	temp = ft_atoi(str);
 	while (str[j] != '\n' && str[j] != '\0')
 	{
-		temp = ft_atoi(str);
 		if (temp == 0)
 		{
-			while (str[i] != '\0')
+			if (str[j] == '-' || str[j] == '+')
+				j++;
+			while (str[j] != '\0')
 			{
-				i = 0;
-				if (str[i] != '0')
+				if (str[j] != '0' && str[j] != '\n')
 					return (1);
-				i++;
+				j++;
 			}
+			continue ;
 		}
-		if (str[j] < 48 || str[j] > 57)
-			return (1);
 		j++;
 	}
 	return (0);
@@ -82,7 +80,7 @@ int	atoi_checker(t_map *matrix, char **temp, int i, int j)
 		return (1);
 	while (i < matrix->size_x)
 	{
-		if (is_valid_args(temp[i], 0, 0, 0))
+		if (is_valid_args(temp[i], 0, 0))
 			return (1);
 		matrix->map[j][i] = ft_atoi(temp[i]);
 		i++;
