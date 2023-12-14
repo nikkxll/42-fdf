@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:07:52 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/14 23:56:39 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/15 00:06:09 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ t_map	*map_creation(t_map *matrix, int j, int i)
 		free(matrix->line);
 		matrix->line = get_next_line(matrix->fd);
 		j++;
-		if (matrix->line && ((matrix->line == NULL && j != matrix->size_y) || matrix->line[0] == '\n'))
+		if (matrix->line && ((matrix->line == NULL 
+			&& j != matrix->size_y) || matrix->line[0] == '\n'))
 			exit(free_mtx_map(matrix, j));
 	}
 	return (matrix);
