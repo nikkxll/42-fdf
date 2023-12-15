@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   freers.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
+/*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:24:13 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/14 23:48:32 by dmitriiniki      ###   ########.fr       */
+/*   Updated: 2023/12/15 13:35:02 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	free_mtx_gnl(t_map *matrix)
 int	free_mtx_map_tmp_gnl(t_map *matrix, char **temp, int j)
 {
 	free_array((void **)matrix->map, j);
-	free_array((void **)temp, matrix->size_x);
+	free_array((void **)temp, array_length(temp));
 	gnl_cleaner(matrix->fd);
 	free(matrix->line);
 	free(matrix);

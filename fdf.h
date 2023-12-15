@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/14 23:58:55 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/15 13:36:31 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ typedef struct s_map
 	int		size_y;
 	int		size_x;
 	int		**map;
+	int		**colmap;
 	char	*line;
 	int		fd;
 }	t_map;
 
-t_map	*map_creation(t_map *matrix, int j, int i);
 char	*matrix_initializer(t_map *matrix, char **argv);
+t_map	*map_creation(t_map *matrix, int j, int i);
 
 int		count_rows(char **argv, t_map *matrix);
 
@@ -39,6 +40,7 @@ int		free_mtx_map(t_map *matrix, int j);
 void	free_array(void **arr, int length);
 
 void	gnl_cleaner(int fd);
+int		array_length_with_free(char **split_line);
 int		array_length(char **split_line);
 
 t_map	*reader(char **argv);

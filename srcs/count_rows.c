@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 23:55:38 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/14 23:58:47 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:50:11 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	count_rows(char **argv, t_map *matrix)
 	int		line_count;
 	char	*buffer;
 	int		first_read_fd;
-	
+
 	line_count = 0;
 	buffer = (char *)malloc(1000 * sizeof(char));
 	if (!buffer)

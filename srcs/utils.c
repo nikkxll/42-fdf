@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmitriinikiforov <dmitriinikiforov@stud    +#+  +:+       +#+        */
+/*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 19:34:16 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/14 23:30:18 by dmitriiniki      ###   ########.fr       */
+/*   Updated: 2023/12/15 12:04:32 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	gnl_cleaner(int fd)
 	free(line);
 }
 
-int	array_length(char **split_line)
+int	array_length_with_free(char **split_line)
 {
 	int	length;
 
@@ -45,45 +45,13 @@ int	array_length(char **split_line)
 	return (length);
 }
 
-static int	is_valid_args(char *str, int j, int temp)
+int	array_length(char **split_line)
 {
-	if (str[j] == 0)
-		return (1);
-	temp = ft_atoi(str);
-	while (str[j] != '\n' && str[j] != '\0')
-	{
-		if (temp == 0)
-		{
-			if (str[j] == '-' || str[j] == '+')
-				j++;
-			while (str[j] != '\0')
-			{
-				if (str[j] != '0' && str[j] != '\n')
-					return (1);
-				j++;
-			}
-			continue ;
-		}
-		j++;
-	}
-	return (0);
-}
+	int	length;
 
-int	atoi_checker(t_map *matrix, char **temp, int i, int j)
-{
-	int	k;
-
-	k = 0;
-	while (temp[k] != NULL && temp[k][0] != '\n')
-		k++;
-	if (k != matrix->size_x)
-		return (1);
-	while (i < matrix->size_x)
-	{
-		if (is_valid_args(temp[i], 0, 0))
-			return (1);
-		matrix->map[j][i] = ft_atoi(temp[i]);
-		i++;
-	}
-	return (0);
+	length = 0;
+	while (split_line[length] != NULL
+		&& ft_strncmp(split_line[length], "\n", 1) != 0)
+		length++;
+	return (length);
 }
