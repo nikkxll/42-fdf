@@ -6,11 +6,11 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:03:46 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/15 12:04:26 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:34:54 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 static int	is_valid_num(char *str)
 {

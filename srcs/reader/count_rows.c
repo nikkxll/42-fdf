@@ -6,11 +6,11 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 23:55:38 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/15 11:50:11 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:34:29 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 static int	text_runner(int first_read_fd, t_map *matrix, char *buffer)
 {

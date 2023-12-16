@@ -6,11 +6,11 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 19:34:16 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/15 12:04:32 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:44:23 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 void	gnl_cleaner(int fd)
 {
@@ -54,4 +54,23 @@ int	array_length(char **split_line)
 		&& ft_strncmp(split_line[length], "\n", 1) != 0)
 		length++;
 	return (length);
+}
+
+char	*ft_strdup_nl(const char *s1)
+{
+	char	*dest;
+	char	*ptr;
+
+	dest = (char *)malloc(ft_strlen(s1) + 1);
+	if (!dest)
+		return (NULL);
+	ptr = dest;
+	while (*s1 != '\0' && *s1 != '\n')
+	{
+		*dest = *s1;
+		dest++;
+		s1++;
+	}
+	*dest = '\0';
+	return (ptr);
 }
