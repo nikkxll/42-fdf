@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/18 11:08:26 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:19:23 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 # include "./libft/libft/get_next_line.h"
 # include <fcntl.h>
 # include <stdio.h>
+# include "lib/MLX42/include/MLX42/MLX42.h"
+
+# ifndef WIDTH
+#  define WIDTH 500
+# endif
+
+# ifndef HEIGHT
+#  define HEIGHT 500
+# endif
 
 typedef struct s_map
 {
@@ -51,6 +60,7 @@ t_map	*reader(char **argv);
 void	print(t_map *matrix); //delete before submission
 
 int		atoi_checker(t_map *matrix, char **temp, int i, int j);
+int		is_valid_num(char *str);
 
 void	colour_extractor(char **str, t_map *matrix, int j);
 

@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:22:26 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/18 11:08:09 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:16:44 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,23 @@ int	colour_format_checker(t_map *matrix, int j, int k)
 	list = "1234567890abcdefABCDEF";
 	i = 0;
 	if (matrix->colmap[j][k][i] == '0' && matrix->colmap[j][k][i + 1] == 'x')
-		i += 2;
-	else
-		return (1);
-	while (matrix->colmap[j][k][i] != '\0')
 	{
-		if (!ft_strchr(list, matrix->colmap[j][k][i]))
+		i += 2;
+		while (matrix->colmap[j][k][i] != '\0')
+		{
+			if (!ft_strchr(list, matrix->colmap[j][k][i]))
+				return (1);
+			i++;
+		}
+		if (i > 8 || i < 3)
 			return (1);
-		i++;
 	}
-	if (i > 8 || i < 3)
-		return (1);
+	else
+	{
+		if (is_valid_num(matrix->colmap[j][k])
+			|| ft_strlen(matrix->colmap[j][k]) == 0)
+			return (1);
+	}
 	return (0);
 }
 

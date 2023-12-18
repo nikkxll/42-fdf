@@ -14,7 +14,6 @@ $(NAME):
 
 clean:
 	@$(MAKE) clean -C libft/
-	@echo "$(BLUE)🧹 Cleaned object files from libft$(NC)"
 
 fclean: clean
 	@-rm -f $(NAME)

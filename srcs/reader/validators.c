@@ -6,13 +6,27 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:03:46 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/16 16:34:54 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:19:12 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fdf.h"
 
-static int	is_valid_num(char *str)
+int	is_valid_num(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\n' && str[i] != '\0')
+	{
+		if (str[i] < 48 || str[i] > 57)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static int	is_valid_num_with_sign(char *str)
 {
 	int	i;
 
@@ -63,7 +77,7 @@ int	atoi_checker(t_map *matrix, char **temp, int i, int j)
 		return (1);
 	while (i < matrix->size_x)
 	{
-		if (is_valid_null(temp[i], 0, 0) || is_valid_num(temp[i]))
+		if (is_valid_null(temp[i], 0, 0) || is_valid_num_with_sign(temp[i]))
 			return (1);
 		matrix->map[j][i] = ft_atoi(temp[i]);
 		i++;
