@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:24:13 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/16 16:34:42 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:08:43 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	free_array(void **arr, int length)
 void	free_triple_pointer(t_map *matrix, int length)
 {
 	int	i;
-	int k;
+	int	k;
 
 	i = 0;
 	k = 0;

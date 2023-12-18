@@ -7,6 +7,7 @@ LIBFT_DIR = ./libft/
 LIBFT_DIR_MAIN = ./libft/libft/
 SRCS_PATH = ./srcs/
 READER_PATH = $(SRCS_PATH)/reader/
+DEALLOC_PATH = $(SRCS_PATH)/deallocation/
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS_LIBFT = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
@@ -21,8 +22,9 @@ SRCS_LIBFT = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
   ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
   get_next_line.c get_next_line_utils.c
 
-SRCS_READER = mixed_freers.c utils.c map_creation.c reader.c count_rows.c \
-  validators.c colour_extractor.c matrix_freers.c
+SRCS_READER = utils.c map_creation.c reader.c count_rows.c validators.c colour_extractor.c
+
+SRCS_DEALLOC = mixed_freers.c matrix_freers.c
 
 MAIN = main.c
 
@@ -36,7 +38,8 @@ OBJS = $(addprefix $(LIBFT_DIR_MAIN), $(OBJS_LIBFT))
 
 SRCS = $(addprefix $(READER_PATH), $(SRCS_READER)) \
   $(addprefix $(LIBFT_DIR_MAIN), $(SRCS_LIBFT)) \
-  $(addprefix $(SRCS_PATH), $(MAIN))
+  $(addprefix $(SRCS_PATH), $(MAIN)) \
+  $(addprefix $(DEALLOC_PATH), $(SRCS_DEALLOC))
 
 GREEN = \033[0;32m
 BLUE = \033[0;34m

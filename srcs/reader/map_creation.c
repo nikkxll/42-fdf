@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:07:52 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/16 17:02:05 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/18 11:08:51 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*matrix_initializer(t_map *matrix, char **argv)
 
 static void	map_creation_checkers(char **temp, t_map *matrix, int j, int i)
 {
-	if(!temp)
+	if (!temp)
 		exit(free_mtx_map_gnl(matrix, j));
 	if (array_length(temp) != matrix->size_x)
 		exit(free_mtx_map_tmp_gnl(matrix, temp, j, j));
