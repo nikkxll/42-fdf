@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/18 15:19:23 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/19 12:18:58 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ void	print(t_map *matrix); //delete before submission
 
 int		atoi_checker(t_map *matrix, char **temp, int i, int j);
 int		is_valid_num(char *str);
+int		null_checker(char *str, int j, int temp);
 
 void	colour_extractor(char **str, t_map *matrix, int j);
+
+void	colour_modifier(t_map *matrix, int *colours, int i, int j);
 
 #endif

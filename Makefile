@@ -25,7 +25,7 @@ SRCS_LIBFT		:= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c 
 
 SRCS_READER		:= utils.c map_creation.c reader.c count_rows.c validators.c colour_extractor.c
 SRCS_DEALLOC	:= mixed_freers.c matrix_freers.c
-MAIN			:= main.c
+MAIN			:= main.c colour_modifier.c
 
 HEADERS			:= -I$(LIBMLX_DIR) -I$(LIBFT_DIR) -I$(LIBFT_DIR)/libft -I$(LIBFT_DIR)/libft/get_next_line.h
 LIB				:= -L$(LIBMLX)/build -lmlx42 -L$(LIBFT_DIR) -lft -L"/Users/$(USER)/.brew/opt/glfw/lib" -lglfw -framework OpenGL -framework AppKit
@@ -45,7 +45,7 @@ all: $(NAME)
 
 $(NAME): $(SRCS) $(OBJS) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(HEADERS) $(LIB) -o $(NAME)
-	@echo "$(GREEN)✅ Compilation of '$(NAME)' completed successfully$(NC)"
+	@echo "$(GREEN)Compilation of '$(NAME)' completed successfully$(NC)"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@ $(HEADERS) 
@@ -55,19 +55,20 @@ $(LIBFT):
 
 $(MLX):
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+	@echo "$(GREEN)Library 'libmlx42.a' created$(NC)"
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@rm -rf $(LIBMLX)/build
-	@echo "$(BLUE)🧹 Cleaned object files from libft and build folder from mlx42$(NC)"
+	@echo "$(BLUE)Cleaned object files from libft and build folder from mlx42$(NC)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(BLUE)🧹 Removed '$(NAME)'$(NC)"
+	@echo "$(BLUE)Removed '$(NAME)'$(NC)"
 	@make -C $(LIBFT_DIR) fclean
-	@echo "$(BLUE)✅ Cleaning finished$(NC)"
+	@echo "$(BLUE)Cleaning finished$(NC)"
 
 re: fclean all
-	@echo "$(GREEN)🚀 Everything recompiled$(NC)"
+	@echo "$(GREEN)Everything recompiled$(NC)"
 
 .PHONY: all clean fclean re libmlx

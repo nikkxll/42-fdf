@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:03:46 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/18 15:19:12 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/19 12:21:25 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	is_valid_num_with_sign(char *str)
 	return (0);
 }
 
-static int	is_valid_null(char *str, int j, int temp)
+int	null_checker(char *str, int j, int temp)
 {
 	if (str[j] == 0)
 		return (1);
@@ -77,7 +77,8 @@ int	atoi_checker(t_map *matrix, char **temp, int i, int j)
 		return (1);
 	while (i < matrix->size_x)
 	{
-		if (is_valid_null(temp[i], 0, 0) || is_valid_num_with_sign(temp[i]))
+		if (null_checker(temp[i], 0, 0)
+			|| is_valid_num_with_sign(temp[i]))
 			return (1);
 		matrix->map[j][i] = ft_atoi(temp[i]);
 		i++;
