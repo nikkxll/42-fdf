@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/19 12:18:58 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:16:38 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ int		null_checker(char *str, int j, int temp);
 
 void	colour_extractor(char **str, t_map *matrix, int j);
 
-void	colour_modifier(t_map *matrix, int *colours, int i, int j);
+long	colour_modifier(t_map *matrix, int i, int j);
 
 #endif
