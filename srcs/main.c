@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:17:57 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/20 15:47:14 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:42:17 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,42 +65,67 @@ void	print_col(t_map *matrix)
 	}
 }
 
-void	horizontal_lines(mlx_image_t *img, int incr, int offset_x, int offset_y)
+int	set_colour(int i, t_map *matrix, t_wf *frame, int flag)
+{
+	long	a;
+	long	b;
+
+	if (flag)
+	{
+		a = colour_to_long(matrix, frame->row, frame->column - 1);
+		b = colour_to_long(matrix, frame->row, frame->column);
+		frame->incr[0] = (float)(((a >> 24) & 0xFF) - ((b >> 24) & 0xFF)) / frame->steps;
+		frame->incr[1] = ((a >> 16) & 0xFF - (b >> 16) & 0xFF) / frame->steps;
+		frame->incr[2] = ((a >> 8) & 0xFF - (b >> 8) & 0xFF) / frame->steps;
+		i = 0;
+	}
+	return (0);
+}
+
+void	horizontal_lines(mlx_image_t *img, t_wf *frame, t_map *matrix)
 {
 	int	i;
+	int	colour;
 
 	i = 1;
-	while (i < incr)
+	while (i < frame->steps)
 	{
-		mlx_put_pixel(img, offset_x + i, offset_y, 0x000000FF);
+		colour = set_colour(i, matrix, frame, 1);
+		mlx_put_pixel(img, frame->offset_x + i, frame->offset_y, 255);
 		i++;
 	}
 }
 
-void	vertical_lines(mlx_image_t *img, int incr, int offset_x, int offset_y)
+void	vertical_lines(mlx_image_t *img, t_wf *frame, t_map *matrix)
 {
 	int	i;
+	int	colour;
 
 	i = 0;
-	while (i++ < incr - 1)
-		mlx_put_pixel(img, offset_x, offset_y - i, 0x000000FF);
+	while (i++ < frame->steps - 1)
+	{
+		colour = set_colour(i, matrix, frame, 1);
+		mlx_put_pixel(img, frame->offset_x, frame->offset_y - i, 255);
+	}
 }
 
 int	main(int argc, char **argv)
 {
 	t_map			*matrix;
+	t_wf			*frame;
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	int				i;
-	int				j;
-	int				pixel_offset_x;
-	int				pixel_offset_y;
-	int				incr;
 
-	i = 0;
-	j = 1;
-	pixel_offset_x = 0;
-	pixel_offset_y = 0;
+	frame = (t_wf *)malloc(sizeof(t_wf));
+	if (!frame)
+	{
+		ft_error();
+		exit(EXIT_FAILURE);
+	}
+	frame->column = 1;
+	frame->row = 0;
+	frame->offset_x = 0;
+	frame->offset_y = 0;
 	if (argc == 2)
 	{
 		matrix = reader(argv);
@@ -116,29 +141,29 @@ int	main(int argc, char **argv)
 
 		img = mlx_new_image(mlx, 1024, 1024);
 		if (matrix->size_x > matrix->size_y)
-			incr = 1023 / matrix->size_x;
+			frame->steps = 1023 / matrix->size_x;
 		else
-			incr = 1023 / matrix->size_y;
-		while (i < matrix->size_y)
+			frame->steps = 1023 / matrix->size_y;
+		while (frame->row < matrix->size_y)
 		{
-			j = 0;
-			while (j < matrix->size_x - 1)
+			frame->column = 0;
+			while (frame->column < matrix->size_x - 1)
 			{
-				mlx_put_pixel(img, pixel_offset_x, pixel_offset_y,
-					colour_modifier(matrix, i, j));
-				if (i > 0)
-					vertical_lines(img, incr, pixel_offset_x, pixel_offset_y);
-				j++;
-				horizontal_lines(img, incr, pixel_offset_x, pixel_offset_y);
-				pixel_offset_x += incr;
-				if (j == matrix->size_x - 1 && i > 0)
-					vertical_lines(img, incr, pixel_offset_x, pixel_offset_y);
+				mlx_put_pixel(img, frame->offset_x, frame->offset_y,
+					colour_to_long(matrix, frame->row, frame->column));
+				if (frame->row > 0)
+					vertical_lines(img, frame, matrix);
+				frame->column++;
+				horizontal_lines(img, frame, matrix);
+				frame->offset_x += frame->steps;
+				if (frame->column == matrix->size_x - 1 && frame->row > 0)
+					vertical_lines(img, frame, matrix);
 			}
-			mlx_put_pixel(img, pixel_offset_x, pixel_offset_y,
-				colour_modifier(matrix, i, j));
-			i++;
-			pixel_offset_y = i * incr;
-			pixel_offset_x = 0;
+			mlx_put_pixel(img, frame->offset_x, frame->offset_y,
+				colour_to_long(matrix, frame->row, frame->column));
+			frame->row++;
+			frame->offset_y = frame->row * frame->steps;
+			frame->offset_x = 0;
 		}
 		mlx_image_to_window(mlx, img, 200, 200);
 		mlx_loop(mlx);

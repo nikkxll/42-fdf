@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/20 12:16:38 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:22:36 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ typedef struct s_map
 	int		fd;
 }	t_map;
 
+typedef struct s_wf
+{
+	int		steps;
+	int		row;
+	int		column;
+	int		offset_x;
+	int		offset_y;
+	float	incr[3];
+	float	incr_sum[3];
+}	t_wf;
+
 char	*matrix_initializer(t_map *matrix, char **argv);
 t_map	*map_creation(t_map *matrix, int j, int i);
 
@@ -65,6 +76,6 @@ int		null_checker(char *str, int j, int temp);
 
 void	colour_extractor(char **str, t_map *matrix, int j);
 
-long	colour_modifier(t_map *matrix, int i, int j);
+long	colour_to_long(t_map *matrix, int i, int j);
 
 #endif

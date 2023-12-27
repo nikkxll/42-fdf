@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:05:05 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/20 12:17:04 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:07:39 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ long	ft_atoi_base(char *num, int format)
 	return (result);
 }
 
-long	colour_modifier(t_map *matrix, int i, int j)
+long	colour_to_long(t_map *matrix, int i, int j)
 {
-	long			number;
-	int				mode;
+	long	number;
+	int		mode;
 
 	if (!matrix->colmap[i][j])
 		number = 16777215;
