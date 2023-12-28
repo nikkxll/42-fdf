@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/27 17:22:36 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/28 21:22:53 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,8 @@
 # include "./libft/libft/get_next_line.h"
 # include <fcntl.h>
 # include <stdio.h>
+# include <math.h>
 # include "lib/MLX42/include/MLX42/MLX42.h"
-
-# ifndef WIDTH
-#  define WIDTH 500
-# endif
-
-# ifndef HEIGHT
-#  define HEIGHT 500
-# endif
 
 typedef struct s_map
 {
@@ -39,13 +32,14 @@ typedef struct s_map
 
 typedef struct s_wf
 {
-	int		steps;
-	int		row;
-	int		column;
-	int		offset_x;
-	int		offset_y;
+	float	x;
+	float	y;
+	float	zoom;
+	long	colour;
 	float	incr[3];
-	float	incr_sum[3];
+	void	*mlx;
+	void	*img;
+	float	max;
 }	t_wf;
 
 char	*matrix_initializer(t_map *matrix, char **argv);
@@ -77,5 +71,11 @@ int		null_checker(char *str, int j, int temp);
 void	colour_extractor(char **str, t_map *matrix, int j);
 
 long	colour_to_long(t_map *matrix, int i, int j);
+
+void	bresenham(t_wf *frame, t_map *matrix, float x1, float y1, int flag);
+void	draw_wireframe(t_wf *frame, t_map *matrix);
+
+long	set_x(t_wf *frame, t_map *matrix, float incr);
+long	set_y(t_wf *frame, t_map *matrix, float incr);
 
 #endif
