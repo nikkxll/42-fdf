@@ -18,7 +18,7 @@ GNL_HEADER		:= $(LIBFT_DIR)/libft/get_next_line.h
 
 SRCS_READER		:= utils.c map_creation.c reader.c count_rows.c validators.c colour_extractor.c
 SRCS_DEALLOC	:= mixed_freers.c matrix_freers.c
-MAIN			:= main.c colour_modifier.c draw_wireframe.c colour_interpolation.c
+MAIN			:= main.c colour_modifier.c draw_wireframe.c colour_interpolation.c utils_core.c actions.c
 
 HEADERS			:= -I$(LIBMLX_DIR) -I$(LIBFT_DIR) -I$(LIBFT_DIR)/libft -I$(LIBFT_DIR)/libft/get_next_line.h
 LIB				:= -L$(LIBMLX)/build -lmlx42 -L$(LIBFT_DIR) -lft -L"/Users/$(USER)/.brew/opt/glfw/lib" -lglfw -framework OpenGL -framework AppKit

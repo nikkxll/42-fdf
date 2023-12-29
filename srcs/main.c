@@ -6,15 +6,13 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:17:57 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/28 22:04:27 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/29 18:08:09 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
 #include "MLX42/MLX42.h"
-#include <stdlib.h>
-#include <string.h>
 
 static void	ft_error(void)
 {
@@ -22,9 +20,18 @@ static void	ft_error(void)
 	exit(EXIT_FAILURE);
 }
 
+void	initial_params(t_wf *frame)
+{
+	frame->zoom = 500 / ft_max(frame->matrix->size_x, frame->matrix->size_y);
+	frame->shift_x = 500;
+	frame->shift_y = 250;
+	frame->angle = 0.8;
+	if (frame->zoom == 0)
+		frame->zoom = 1;
+}
+
 int	main(int argc, char **argv)
 {
-	t_map	*matrix;
 	t_wf	*frame;
 
 	frame = (t_wf *)malloc(sizeof(t_wf));
@@ -32,22 +39,22 @@ int	main(int argc, char **argv)
 		exit(1);
 	if (argc == 2)
 	{
-		matrix = reader(argv);
-		frame->zoom = 12;
-		frame->mlx = mlx_init(2000, 2000, "FdF", true);
+		frame->matrix = reader(argv);
+		initial_params(frame);
+		frame->mlx = mlx_init(1000, 1000, "FdF", true);
 		if (!frame->mlx)
-		{
 			ft_error();
-			exit(EXIT_FAILURE);
-		}
-		frame->img = mlx_new_image(frame->mlx, 2000, 2000);
+		frame->img = mlx_new_image(frame->mlx, 1000, 1000);
+		draw_wireframe(frame, frame->matrix);
 		mlx_image_to_window(frame->mlx, frame->img, 0, 0);
-		draw_wireframe(frame, matrix);
+		mlx_key_hook(frame->mlx, move_rotate, frame);
+		mlx_scroll_hook(frame->mlx, zoom, frame);
 		mlx_loop(frame->mlx);
+		mlx_delete_image(frame->mlx, frame->img);
 		mlx_terminate(frame->mlx);
-		free_array((void **)matrix->map, matrix->size_y);
-		free_triple_pointer(matrix, matrix->size_y);
-		free(matrix);
+		free_array((void **)frame->matrix->map, frame->matrix ->size_y);
+		free_triple_pointer(frame->matrix, frame->matrix->size_y);
+		free(frame->matrix);
 		return (EXIT_SUCCESS);
 	}
 }

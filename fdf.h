@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/28 21:22:53 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/29 17:41:57 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+# include <limits.h>
 # include "lib/MLX42/include/MLX42/MLX42.h"
 
 typedef struct s_map
@@ -34,12 +35,24 @@ typedef struct s_wf
 {
 	float	x;
 	float	y;
+	float	x_incr;
+	float	y_incr;
+	float	temp_x;
+	float	temp_y;
+	float	max;
+	int		z;
+	int		z1;
 	float	zoom;
 	long	colour;
+	int		colour_delta;
+	int		dimension;
 	float	incr[3];
 	void	*mlx;
 	void	*img;
-	float	max;
+	t_map	*matrix;
+	int		shift_x;
+	int		shift_y;
+	float	angle;
 }	t_wf;
 
 char	*matrix_initializer(t_map *matrix, char **argv);
@@ -62,7 +75,6 @@ int		array_length(char **split_line);
 char	*ft_strdup_nl(const char *s1);
 
 t_map	*reader(char **argv);
-void	print(t_map *matrix); //delete before submission
 
 int		atoi_checker(t_map *matrix, char **temp, int i, int j);
 int		is_valid_num(char *str);
@@ -72,10 +84,15 @@ void	colour_extractor(char **str, t_map *matrix, int j);
 
 long	colour_to_long(t_map *matrix, int i, int j);
 
-void	bresenham(t_wf *frame, t_map *matrix, float x1, float y1, int flag);
+void	bresenham(t_wf *frame, t_map *matrix, float x1, float y1);
 void	draw_wireframe(t_wf *frame, t_map *matrix);
 
-long	set_x(t_wf *frame, t_map *matrix, float incr);
-long	set_y(t_wf *frame, t_map *matrix, float incr);
+long	set_x(t_wf *frame, t_map *matrix);
+long	set_y(t_wf *frame, t_map *matrix);
+
+int		ft_max(int a, int b);
+
+void	move_rotate(mlx_key_data_t keydata, void *param);
+void	zoom(double xdelta, double ydelta, void *param);
 
 #endif
