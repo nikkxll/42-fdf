@@ -6,13 +6,13 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:22:26 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/18 16:16:44 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 23:09:33 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fdf.h"
 
-int	colour_format_checker(t_map *matrix, int j, int k)
+static int	colour_format_checker(t_map *matrix, int j, int k)
 {
 	int		i;
 	char	*list;
@@ -40,7 +40,7 @@ int	colour_format_checker(t_map *matrix, int j, int k)
 	return (0);
 }
 
-void	colour_array_free(char **temp, t_map *matrix, int j, int k)
+static void	colour_array_free(char **temp, t_map *matrix, int j, int k)
 {
 	while (k--)
 		free(matrix->colmap[j][k]);

@@ -6,13 +6,13 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:41:03 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 21:18:03 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 23:16:59 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fdf.h"
 
-void	img_update(t_wf *frame)
+static void	img_update(t_wf *frame)
 {
 	mlx_delete_image(frame->mlx, frame->img);
 	frame->img = mlx_new_image(frame->mlx, 1000, 1000);
@@ -21,7 +21,7 @@ void	img_update(t_wf *frame)
 	mlx_image_to_window(frame->mlx, frame->img, 0, 0);
 }
 
-void	set_default(t_wf *frame)
+static void	set_default(t_wf *frame)
 {
 	frame->angle = 0.8;
 	frame->shift_x = 500;

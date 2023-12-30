@@ -6,19 +6,19 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:49:29 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 17:05:34 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 23:20:29 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fdf.h"
 
-void	isometric(float *x, float *y, int z, float angle)
+static void	isometric(float *x, float *y, int z, float angle)
 {
 	*x = (*x - *y) * cos(angle);
 	*y = (*x + *y) * sin(angle) - z;
 }
 
-void	last_pixel(t_wf *frame, t_map *matrix, float x, float y)
+static void	last_pixel(t_wf *frame, t_map *matrix, float x, float y)
 {
 	frame->z = matrix->map[(int)frame->y - 1][(int)frame->x - 1];
 	isometric(&x, &y, frame->z, frame->angle);
@@ -30,7 +30,7 @@ void	last_pixel(t_wf *frame, t_map *matrix, float x, float y)
 		colour_to_long(frame, matrix, matrix->size_y - 1, matrix->size_x - 1));
 }
 
-void	algorithm_presetting(t_wf *frame, t_map *matrix, float *x1, float *y1)
+static void	algorithm_presetting(t_wf *frame, t_map *matrix, float *x1, float *y1)
 {
 	frame->colour_delta = 0;
 	frame->z = matrix->map[(int)frame->y][(int)frame->x];
@@ -50,7 +50,7 @@ void	algorithm_presetting(t_wf *frame, t_map *matrix, float *x1, float *y1)
 	*y1 += frame->shift_y;
 }
 
-void	bresenham(t_wf *frame, t_map *matrix, float x1, float y1)
+static void	bresenham(t_wf *frame, t_map *matrix, float x1, float y1)
 {
 	algorithm_presetting(frame, matrix, &x1, &y1);
 	frame->x_incr = x1 - frame->temp_x;

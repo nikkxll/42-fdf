@@ -6,13 +6,13 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:05:05 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 17:05:22 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 23:19:34 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fdf.h"
 
-int	select_hex_mode(char *arg)
+static int	select_hex_mode(char *arg)
 {
 	size_t	low;
 	size_t	cap;
@@ -34,7 +34,7 @@ int	select_hex_mode(char *arg)
 	return (1 * (low != 0));
 }
 
-long	ft_atoi_base(char *num, int format)
+static long	ft_atoi_base(char *num, int format)
 {
 	size_t		pos;
 	long		result;

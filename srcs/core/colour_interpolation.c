@@ -6,13 +6,13 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:46:36 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 16:53:58 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 23:18:06 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fdf.h"
 
-int	float_to_int_colour(float number)
+static int	float_to_int_colour(float number)
 {
 	int		whole_part;
 	float	remainder;
@@ -25,7 +25,7 @@ int	float_to_int_colour(float number)
 		return (floor(number));
 }
 
-long	rgb_to_long(int red, int green, int blue)
+static long	rgb_to_long(int red, int green, int blue)
 {
 	long	color;
 
@@ -37,7 +37,7 @@ long	rgb_to_long(int red, int green, int blue)
 	return (color);
 }
 
-long	getting_new_colour(t_wf *frame, long a, long b)
+static long	getting_new_colour(t_wf *frame, long a, long b)
 {
 	float	incr_sum[3];
 	long	new_col;

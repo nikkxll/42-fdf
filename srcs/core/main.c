@@ -6,20 +6,20 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:17:57 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 22:25:37 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 23:21:14 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fdf.h"
 
-void	args_error(t_wf *frame)
+static void	args_error(t_wf *frame)
 {
 	free(frame);
 	perror("Number of arguments is not equal to one");
 	exit(EXIT_FAILURE);
 }
 
-void	initial_params(t_wf *frame)
+static void	initial_params(t_wf *frame)
 {
 	frame->zoom = 500 / ft_max(frame->matrix->size_x, frame->matrix->size_y);
 	frame->shift_x = 500;
