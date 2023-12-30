@@ -6,11 +6,11 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:49:29 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/29 17:00:40 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 17:05:34 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 void	isometric(float *x, float *y, int z, float angle)
 {
@@ -27,7 +27,7 @@ void	last_pixel(t_wf *frame, t_map *matrix, float x, float y)
 	if (x >= 1000 || y >= 1000 || x <= 0 || y <= 0)
 		return ;
 	mlx_put_pixel(frame->img, x, y,
-		colour_to_long(matrix, matrix->size_y - 1, matrix->size_x - 1));
+		colour_to_long(frame, matrix, matrix->size_y - 1, matrix->size_x - 1));
 }
 
 void	algorithm_presetting(t_wf *frame, t_map *matrix, float *x1, float *y1)
@@ -37,7 +37,7 @@ void	algorithm_presetting(t_wf *frame, t_map *matrix, float *x1, float *y1)
 	frame->z1 = matrix->map[(int)*y1][(int)*x1];
 	if (frame->z > 50000 || frame->z1 > 50000
 		|| frame->z < -50000 || frame->z1 < -50000)
-		exit (1);
+		ft_exit(frame, 1);
 	frame->temp_x = frame->x * frame->zoom;
 	frame->temp_y = frame->y * frame->zoom;
 	*x1 *= frame->zoom;

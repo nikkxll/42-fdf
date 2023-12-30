@@ -8,6 +8,7 @@ LIBFT_DIR_MAIN	:= ./libft/libft/
 SRCS_PATH		:= ./srcs/
 READER_PATH		:= $(SRCS_PATH)/reader/
 DEALLOC_PATH	:= $(SRCS_PATH)/deallocation/
+CORE_PATH		:= $(SRCS_PATH)/core/
 LIBFT			:= $(LIBFT_DIR)/libft.a
 LIBMLX			:= ./lib/MLX42
 MLX				:= ./lib/MLX42/build/libmlx42.a
@@ -17,8 +18,9 @@ LIBFT_HEADER	:= $(LIBFT_DIR)/libft.h
 GNL_HEADER		:= $(LIBFT_DIR)/libft/get_next_line.h 
 
 SRCS_READER		:= utils.c map_creation.c reader.c count_rows.c validators.c colour_extractor.c
-SRCS_DEALLOC	:= mixed_freers.c matrix_freers.c
-MAIN			:= main.c colour_modifier.c draw_wireframe.c colour_interpolation.c utils_core.c actions.c
+SRCS_DEALLOC	:= mixed_freers.c matrix_freers.c 
+SRCS_CORE		:= colour_modifier.c draw_wireframe.c colour_interpolation.c \
+  utils_core.c actions.c colour_map_creation_if_not_exist.c main.c
 
 HEADERS			:= -I$(LIBMLX_DIR) -I$(LIBFT_DIR) -I$(LIBFT_DIR)/libft -I$(LIBFT_DIR)/libft/get_next_line.h
 LIB				:= -L$(LIBMLX)/build -lmlx42 -L$(LIBFT_DIR) -lft -L"/Users/$(USER)/.brew/opt/glfw/lib" -lglfw -framework OpenGL -framework AppKit
@@ -27,7 +29,7 @@ OBJS_LIBFT		:= $(SRCS_LIBFT:.c=.o)
 
 OBJS			:= $(addprefix $(LIBFT_DIR_MAIN), $(OBJS_LIBFT))
 
-SRCS			:= $(addprefix $(READER_PATH), $(SRCS_READER)) $(addprefix $(SRCS_PATH), $(MAIN)) $(addprefix $(DEALLOC_PATH), $(SRCS_DEALLOC))
+SRCS			:= $(addprefix $(READER_PATH), $(SRCS_READER)) $(addprefix $(DEALLOC_PATH), $(SRCS_DEALLOC)) $(addprefix $(CORE_PATH), $(SRCS_CORE))
 
 GREEN			:= \033[0;32m
 BLUE			:= \033[0;34m
@@ -63,4 +65,4 @@ fclean: clean
 re: fclean all
 	@echo "$(GREEN)Everything recompiled$(NC)"
 
-.PHONY: all clean fclean re libmlx
+.PHONY: all clean fclean re

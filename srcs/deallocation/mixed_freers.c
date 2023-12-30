@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:24:13 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/18 11:08:43 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 15:46:23 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,23 @@ void	free_array(void **arr, int length)
 	{
 		free(arr[i]);
 		i++;
+	}
+	free(arr);
+}
+
+void	free_split(char **arr)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (arr[i])
+		i++;
+	while (j < i)
+	{
+		free(arr[j]);
+		j++;
 	}
 	free(arr);
 }

@@ -6,11 +6,11 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:05:05 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 02:16:35 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 17:05:22 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 int	select_hex_mode(char *arg)
 {
@@ -57,7 +57,7 @@ long	ft_atoi_base(char *num, int format)
 	return (result);
 }
 
-long	colour_to_long(t_map *matrix, int i, int j)
+long	colour_to_long(t_wf *frame, t_map *matrix, int i, int j)
 {
 	long	number;
 	int		mode;
@@ -68,18 +68,18 @@ long	colour_to_long(t_map *matrix, int i, int j)
 	{
 		mode = select_hex_mode(matrix->colmap[i][j] + 2);
 		if (mode == -1)
-			exit(1);
+			ft_exit(frame, 1);
 		number = ft_atoi_base(matrix->colmap[i][j] + 2, mode);
 		if (number > 0xFFFFFF || number < 0)
-			exit(1);
+			ft_exit(frame, 1);
 	}
 	else
 	{
 		if (null_checker(matrix->colmap[i][j], 0, 0))
-			exit(1);
+			ft_exit(frame, 1);
 		number = ft_atoi(matrix->colmap[i][j]);
 		if (number > 0xFFFFFF || number < 0)
-			exit(1);
+			ft_exit(frame, 1);
 	}
 	return ((number << 8) | 0xff);
 }

@@ -6,11 +6,11 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:46:36 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/29 12:30:26 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 16:53:58 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 int	float_to_int_colour(float number)
 {
@@ -63,8 +63,8 @@ long	set_x(t_wf *frame, t_map *matrix)
 	long	b;
 	long	new_col;
 
-	a = colour_to_long(matrix, frame->y, frame->x);
-	b = colour_to_long(matrix, frame->y, frame->x + 1);
+	a = colour_to_long(frame, matrix, frame->y, frame->x);
+	b = colour_to_long(frame, matrix, frame->y, frame->x + 1);
 	new_col = getting_new_colour(frame, a, b);
 	return (new_col);
 }
@@ -75,8 +75,8 @@ long	set_y(t_wf *frame, t_map *matrix)
 	long	b;
 	long	new_col;
 
-	a = colour_to_long(matrix, frame->y, frame->x);
-	b = colour_to_long(matrix, frame->y + 1, frame->x);
+	a = colour_to_long(frame, matrix, frame->y, frame->x);
+	b = colour_to_long(frame, matrix, frame->y + 1, frame->x);
 	new_col = getting_new_colour(frame, a, b);
 	return (new_col);
 }

@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:07:52 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/18 11:08:51 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 15:47:53 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_map	*map_creation(t_map *matrix, int j, int i)
 		map_creation_checkers(temp, matrix, j, i);
 		while (++i - 1 < matrix->size_x)
 			matrix->map[j][i - 1] = ft_atoi(temp[i - 1]);
-		free_array((void **)temp, matrix->size_x);
+		free_split(temp);
 		free(matrix->line);
 		matrix->line = get_next_line(matrix->fd);
 		j++;

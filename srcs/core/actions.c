@@ -6,11 +6,11 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:41:03 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 01:10:51 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 17:04:15 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "../../fdf.h"
 
 void	img_update(t_wf *frame)
 {
@@ -29,7 +29,21 @@ void	set_default(t_wf *frame)
 	frame->zoom = 500 / ft_max(frame->matrix->size_x, frame->matrix->size_y);
 }
 
-void	move_rotate_iso(mlx_key_data_t keydata, void *param)
+void	ft_exit(t_wf *frame, int status)
+{
+	mlx_delete_image(frame->mlx, frame->img);
+	free_array((void **)frame->matrix->map, frame->matrix ->size_y);
+	free_triple_pointer(frame->matrix, frame->matrix->size_y);
+	free(frame->matrix);
+	free(frame);
+	mlx_terminate(frame->mlx);
+	if (status)
+		exit (1);
+	else
+		exit (0);
+}
+
+void	move_rotate_iso_exit(mlx_key_data_t keydata, void *param)
 {
 	t_wf	*frame;
 
@@ -52,6 +66,8 @@ void	move_rotate_iso(mlx_key_data_t keydata, void *param)
 		frame->angle = 0.8;
 	if (keydata.key == 32)
 		set_default(frame);
+	if (keydata.key == 256)
+		ft_exit(frame, 0);
 	img_update(frame);
 }
 
