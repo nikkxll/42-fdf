@@ -6,11 +6,18 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:17:57 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 17:03:09 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 22:25:37 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../fdf.h"
+
+void	args_error(t_wf *frame)
+{
+	free(frame);
+	perror("Number of arguments is not equal to one");
+	exit(EXIT_FAILURE);
+}
 
 void	initial_params(t_wf *frame)
 {
@@ -33,7 +40,7 @@ int	main(int argc, char **argv)
 
 	frame = (t_wf *)malloc(sizeof(t_wf));
 	if (!frame)
-		exit(1);
+		exit(EXIT_FAILURE);
 	if (argc == 2)
 	{
 		frame->matrix = reader(argv);
@@ -50,4 +57,6 @@ int	main(int argc, char **argv)
 		mlx_loop(frame->mlx);
 		ft_exit(frame, 0);
 	}
+	else
+		args_error(frame);
 }

@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:41:03 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 17:04:15 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 21:18:03 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,18 @@ void	set_default(t_wf *frame)
 void	ft_exit(t_wf *frame, int status)
 {
 	mlx_delete_image(frame->mlx, frame->img);
+	mlx_terminate(frame->mlx);
 	free_array((void **)frame->matrix->map, frame->matrix ->size_y);
 	free_triple_pointer(frame->matrix, frame->matrix->size_y);
 	free(frame->matrix);
 	free(frame);
-	mlx_terminate(frame->mlx);
 	if (status)
-		exit (1);
+	{
+		perror("Map content error");
+		exit (EXIT_FAILURE);
+	}
 	else
-		exit (0);
+		exit (EXIT_SUCCESS);
 }
 
 void	move_rotate_iso_exit(mlx_key_data_t keydata, void *param)

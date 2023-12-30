@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 14:39:12 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 16:58:09 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 21:13:06 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	free_mtx_gnl(t_map *matrix)
 	free(matrix->line);
 	gnl_cleaner(matrix->fd);
 	close(matrix->fd);
+	perror("Malloc, map content or file processing error");
 	return (1);
 }
 
@@ -29,6 +30,7 @@ int	free_mtx_map_gnl(t_map *matrix, int j)
 	free(matrix->line);
 	free(matrix);
 	close(matrix->fd);
+	perror("Malloc, map content or file processing error");
 	return (1);
 }
 
@@ -38,6 +40,7 @@ int	free_mtx_map(t_map *matrix, int j)
 	free_triple_pointer(matrix, j);
 	free(matrix);
 	close(matrix->fd);
+	perror("Malloc, map content or file processing error");
 	return (1);
 }
 
@@ -47,5 +50,6 @@ int	free_if_init_fail(t_wf *frame)
 	free_triple_pointer(frame->matrix, frame->matrix->size_y);
 	free(frame->matrix);
 	free(frame);
+	perror("MLX initialization failed");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:24:13 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 15:46:23 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 21:13:20 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	free_mtx_gnl_buf(char *buffer, t_map *matrix)
 	gnl_cleaner(matrix->fd);
 	free(buffer);
 	close(matrix->fd);
+	perror("Error processing the file");
 	return (1);
 }
 
@@ -82,5 +83,6 @@ int	free_mtx_map_tmp_gnl(t_map *matrix, char **temp, int j, int i)
 	free(matrix->line);
 	free(matrix);
 	close(matrix->fd);
+	perror("Map content error (also check for possible malloc fail)");
 	return (1);
 }

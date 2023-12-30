@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:07:52 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 15:47:53 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 22:14:02 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*matrix_initializer(t_map *matrix, char **argv)
 	{
 		free(matrix);
 		close(matrix->fd);
-		exit(1);
+		perror("Empty map");
+		exit(EXIT_FAILURE);
 	}
 	matrix->size_y = count_rows(argv, matrix);
 	split_line = ft_split(matrix->line, ' ');

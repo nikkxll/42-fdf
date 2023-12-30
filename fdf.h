@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 17:02:59 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 20:48:35 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "lib/MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 
 typedef struct s_map
 {

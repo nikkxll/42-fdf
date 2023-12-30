@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:46:44 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/16 17:02:12 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 21:19:18 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_map	*reader(char **argv)
 	if (matrix->fd == -1)
 	{
 		free(matrix);
-		exit(1);
+		perror("Error opening file");
+		exit(EXIT_FAILURE);
 	}
 	matrix->line = matrix_initializer(matrix, argv);
 	matrix = map_creation(matrix, 0, 0);
