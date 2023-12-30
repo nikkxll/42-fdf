@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:05:05 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/20 17:07:39 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 02:16:35 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,5 @@ long	colour_to_long(t_map *matrix, int i, int j)
 		if (number > 0xFFFFFF || number < 0)
 			exit(1);
 	}
-	number = (number << 8) | 0xff;
-	return (number);
+	return ((number << 8) | 0xff);
 }

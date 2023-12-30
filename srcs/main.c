@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:17:57 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/29 18:08:09 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 00:56:02 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ int	main(int argc, char **argv)
 		if (!frame->mlx)
 			ft_error();
 		frame->img = mlx_new_image(frame->mlx, 1000, 1000);
+		render_background(frame);
 		draw_wireframe(frame, frame->matrix);
 		mlx_image_to_window(frame->mlx, frame->img, 0, 0);
-		mlx_key_hook(frame->mlx, move_rotate, frame);
+		mlx_key_hook(frame->mlx, move_rotate_iso, frame);
 		mlx_scroll_hook(frame->mlx, zoom, frame);
 		mlx_loop(frame->mlx);
 		mlx_delete_image(frame->mlx, frame->img);

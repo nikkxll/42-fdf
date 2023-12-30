@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:12:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/29 17:41:57 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/30 00:51:39 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
-# include <limits.h>
 # include "lib/MLX42/include/MLX42/MLX42.h"
 
 typedef struct s_map
@@ -47,8 +46,8 @@ typedef struct s_wf
 	int		colour_delta;
 	int		dimension;
 	float	incr[3];
-	void	*mlx;
-	void	*img;
+	mlx_t	*mlx;
+	mlx_image_t	*img;
 	t_map	*matrix;
 	int		shift_x;
 	int		shift_y;
@@ -92,7 +91,8 @@ long	set_y(t_wf *frame, t_map *matrix);
 
 int		ft_max(int a, int b);
 
-void	move_rotate(mlx_key_data_t keydata, void *param);
+void	move_rotate_iso(mlx_key_data_t keydata, void *param);
 void	zoom(double xdelta, double ydelta, void *param);
+void	render_background(t_wf *frame);
 
 #endif
