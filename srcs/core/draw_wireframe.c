@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:49:29 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 23:20:29 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/31 12:05:08 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	last_pixel(t_wf *frame, t_map *matrix, float x, float y)
 		colour_to_long(frame, matrix, matrix->size_y - 1, matrix->size_x - 1));
 }
 
-static void	algorithm_presetting(t_wf *frame, t_map *matrix, float *x1, float *y1)
+static void	algorithm_preset(t_wf *frame, t_map *matrix, float *x1, float *y1)
 {
 	frame->colour_delta = 0;
 	frame->z = matrix->map[(int)frame->y][(int)frame->x];
@@ -52,7 +52,7 @@ static void	algorithm_presetting(t_wf *frame, t_map *matrix, float *x1, float *y
 
 static void	bresenham(t_wf *frame, t_map *matrix, float x1, float y1)
 {
-	algorithm_presetting(frame, matrix, &x1, &y1);
+	algorithm_preset(frame, matrix, &x1, &y1);
 	frame->x_incr = x1 - frame->temp_x;
 	frame->y_incr = y1 - frame->temp_y;
 	frame->max = ft_max(fabs(frame->x_incr), fabs(frame->y_incr));

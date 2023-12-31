@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:07:52 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 23:29:26 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/31 12:29:47 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*matrix_initializer(t_map *matrix, char **argv)
 	matrix->line = get_next_line(matrix->fd);
 	if (!matrix->line || matrix->line[0] == '\n')
 	{
+		free(matrix->line);
 		free(matrix);
 		close(matrix->fd);
 		perror("Empty row in the map or the whole map");

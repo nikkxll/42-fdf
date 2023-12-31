@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:24:13 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 21:13:20 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/31 12:28:11 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	free_mtx_map_tmp_gnl(t_map *matrix, char **temp, int j, int i)
 {
 	free_array((void **)matrix->map, j);
 	free_triple_pointer(matrix, i);
-	free_array((void **)temp, array_length(temp));
+	free_split(temp);
 	gnl_cleaner(matrix->fd);
 	free(matrix->line);
 	free(matrix);

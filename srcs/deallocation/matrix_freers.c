@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 14:39:12 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/30 21:13:06 by dnikifor         ###   ########.fr       */
+/*   Updated: 2023/12/31 12:24:41 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	free_mtx_map(t_map *matrix, int j)
 {
 	free_array((void **)matrix->map, j);
 	free_triple_pointer(matrix, j);
+	free(matrix->line);
 	free(matrix);
 	close(matrix->fd);
 	perror("Malloc, map content or file processing error");
