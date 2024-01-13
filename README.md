@@ -65,10 +65,6 @@ Passed with 125 ✅
 
 42.fdf
 
-<img width="600" alt="Screenshot 2024-01-13 at 22 51 32" src="https://github.com/nikkxll/fdf/assets/125829393/0fe3e16b-82b4-48ae-aeba-062324713e31">
-
-t2.fdf
-
 <img width="600" alt="Screenshot 2024-01-13 at 22 54 41" src="https://github.com/nikkxll/fdf/assets/125829393/92243f05-231a-4071-9533-0e3ba4d11097">
 
 France.XXL.fdf
