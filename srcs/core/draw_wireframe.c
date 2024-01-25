@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:49:29 by dnikifor          #+#    #+#             */
-/*   Updated: 2023/12/31 12:05:08 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:28:04 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void	algorithm_preset(t_wf *frame, t_map *matrix, float *x1, float *y1)
 	frame->temp_y = frame->y * frame->zoom;
 	*x1 *= frame->zoom;
 	*y1 *= frame->zoom;
+	frame->z *= frame->zoom;
+	frame->z1 *= frame->zoom;
 	isometric(&frame->temp_x, &frame->temp_y, frame->z, frame->angle);
 	isometric(x1, y1, frame->z1, frame->angle);
 	frame->temp_x += frame->shift_x;
