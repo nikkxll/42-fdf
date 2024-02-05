@@ -5,6 +5,7 @@
 - [Rendering](#rendering)
 - [Graphic management](#graphic-management)
 - [Bonus](#bonus)
+- [Usage](#usage)
 - [Results](#results)
 
 ## Introduction
@@ -56,6 +57,18 @@ For the bonus part you would be encouraged to develop your own original extra fe
 • Rotate your model.
 
 • Add one more bonus of your choice.
+
+## Usage
+
+To compile the project run:
+```
+make
+```
+
+After that, run the executable with specific map of your choice:
+```
+./fdf <map_name>.fdf
+```
 
 ## Results
 
