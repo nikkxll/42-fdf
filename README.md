@@ -61,7 +61,7 @@ For the bonus part you would be encouraged to develop your own original extra fe
 
 Passed with 125 ✅
 
-<img width="600" alt="Screenshot 2024-01-13 at 22 47 58" src="https://github.com/nikkxll/fdf/assets/125829393/f18c3120-14b5-4d1c-bac3-f439a87c224c">
+<img width="600" alt="Screen Shot 2024-02-05 at 1 30 30 PM" src="https://github.com/nikkxll/42-fdf/assets/125829393/42d1f816-5501-47a9-bdfb-e97b1a945701">
 
 42.fdf
 
